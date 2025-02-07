@@ -1,4 +1,3 @@
-// composables/useApi.ts
 import type { UseFetchOptions } from 'nuxt/app'
 
 export const useApi = <T>(
@@ -16,10 +15,7 @@ export const useApi = <T>(
       ...options?.headers,
       'Content-Type': 'application/json',
     },
-    query:
-      method === 'GET'
-        ? { ...options?.query, api_key: config.public.apiKey }
-        : undefined,
+    query: { ...options?.query, api_key: config.public.apiKey },
     body: method !== 'GET' ? options?.body : undefined,
     onResponseError({ error }) {
       throw createError(error || {})
