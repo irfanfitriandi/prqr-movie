@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps<{ popular: Movie[]; release: Movie[] }>()
+defineProps<{
+  popular: Movie[]
+  release: Movie[]
+  type: 'Movies' | 'Tv Shows'
+}>()
 const currentTab = ref(0)
 const TAB_OPTIONS = ['Popularity', 'Release Date']
 </script>
@@ -10,7 +14,7 @@ const TAB_OPTIONS = ['Popularity', 'Release Date']
     <div class="flex justify-between">
       <div class="space-y-4">
         <div class="bg-primary h-1.5 w-28"></div>
-        <div class="text-2xl font-semibold">Discover Movies</div>
+        <div class="text-2xl font-semibold">Discover {{ type }}</div>
       </div>
       <div class="space-x-6">
         <button

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const { data: popular } = useApi<PaginatedResponse<Movie>>(
-  API.DISCOVER.DISCOVER_MOVIES,
+  API.DISCOVER.DISCOVER_TV,
 )
 const { data: release } = useApi<PaginatedResponse<Movie>>(
-  API.DISCOVER.DISCOVER_MOVIES,
+  API.DISCOVER.DISCOVER_TV,
   'GET',
   {
     query: {
@@ -19,7 +19,7 @@ const { data: release } = useApi<PaginatedResponse<Movie>>(
     <DiscoverSection
       :popular="popular?.results || []"
       :release="release?.results || []"
-      type="Movies"
+      type="Tv Shows"
     />
   </section>
 </template>

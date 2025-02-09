@@ -48,7 +48,7 @@ const closeCategories = () => {
             <div>{{ menu.label }}</div>
             <div
               v-if="showCategories"
-              class="absolute top-8 left-[50%] flex w-[120%] -translate-x-1/2 flex-col overflow-clip rounded-lg bg-white py-2 shadow-md shadow-black/20"
+              class="absolute top-8 left-[50%] z-20 flex w-[120%] -translate-x-1/2 flex-col overflow-clip rounded-lg bg-white py-2 shadow-md shadow-black/20"
               @pointerenter="openCategories"
               @pointerleave="closeCategories"
             >

@@ -1,23 +1,29 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 
+const props = defineProps<{ movie: Movie }>()
 const { getGenreMovieName, fetchGenres, genreMovie } = useGenreStore()
 const url = useRequestURL()
 const apiImg = useRuntimeConfig().public.apiImg
 const isImageLoaded = ref(false)
 
-const props = defineProps<{ movie: Movie }>()
+const genreName = computed(() => {
+  return genreMovie.length > 0
+    ? getGenreMovieName(props.movie.genre_ids[0])
+    : 'Loading...'
+})
+
+const handleImageError = (event: Event | any) => {
+  // Bug on nuxt/image, target null
+  // const target = event.target as HTMLImageElement
+  // target.src = ''
+  if (process.env.NODE_ENV === 'development') console.error(event)
+}
 
 onMounted(() => {
   if (genreMovie.length === 0) {
     fetchGenres()
   }
-})
-
-const genreName = computed(() => {
-  return genreMovie.length > 0
-    ? getGenreMovieName(props.movie.genre_ids[0])
-    : 'Loading...'
 })
 </script>
 
@@ -47,6 +53,7 @@ const genreName = computed(() => {
           class="absolute aspect-[2/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
           @load="isImageLoaded = true"
+          @error="handleImageError"
         />
       </div>
 
@@ -59,9 +66,11 @@ const genreName = computed(() => {
             {{ ratingFormatted(movie.vote_average) }}
           </span>
         </div>
-        <div class="pt-2 text-lg font-semibold">
-          {{ genreName }}
-        </div>
+        <ClientOnly>
+          <div class="pt-2 text-lg font-semibold">
+            {{ genreName }}
+          </div>
+        </ClientOnly>
         <NuxtLink
           :to="{
             name: 'movies-id',
@@ -75,6 +84,7 @@ const genreName = computed(() => {
         </NuxtLink>
       </div>
     </div>
+
     <p class="mt-3 text-lg font-bold">{{ movie.title }}</p>
     <p>{{ dayjs(movie.release_date).format('YYYY') }}</p>
   </div>

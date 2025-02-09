@@ -15,7 +15,11 @@ export const useApi = <T>(
       ...options?.headers,
       'Content-Type': 'application/json',
     },
-    query: { ...options?.query, api_key: config.public.apiKey },
+    query: {
+      ...options?.query,
+      api_key: config.public.apiKey,
+      'vote_count.gte': 100,
+    },
     body: method !== 'GET' ? options?.body : undefined,
     onResponseError({ error }) {
       throw createError(error || {})

@@ -26,9 +26,9 @@ input[type='checkbox']:checked {
 }
 
 input[type='checkbox']:checked:after {
-  content: '✔';
+  content: 'v';
   color: white;
-  margin-top: 1px;
+  margin-top: -2px;
 }
 
 input[type='checkbox'] {
