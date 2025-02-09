@@ -1,8 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="relative h-screen">
-    <NuxtLoadingIndicator />
+  <main class="bg-secondary text-tertiary">
+    <NavbarLayout />
     <slot />
-  </div>
+    <FooterLayout />
+  </main>
 </template>

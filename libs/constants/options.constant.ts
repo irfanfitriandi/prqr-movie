@@ -1,3 +1,26 @@
+export const MENU_OPTIONS = [
+  {
+    label: 'categories',
+    action: 'hover',
+    url: '',
+  },
+  {
+    label: 'movies',
+    action: 'navigate',
+    url: '/movies',
+  },
+  {
+    label: 'tv shows',
+    action: 'navigate',
+    url: '/tv-shows',
+  },
+  {
+    label: 'login',
+    action: '',
+    url: '',
+  },
+] as const
+
 export const GENRE_OPTIONS = {
   Action: 28,
   Adventure: 12,

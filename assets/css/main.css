@@ -2,9 +2,36 @@
 
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: #e74c3c;
+  --color-secondary: #1e232b;
+  --color-tertiary: #e5e5e5;
+  --color-muted: #929292;
+}
+
 body {
   -webkit-tap-highlight-color: transparent;
   font-family: 'Montserrat', serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+input {
+  outline: none;
+}
+
+input[type='checkbox']:checked {
+  background-color: #e74c3c;
+}
+
+input[type='checkbox']:checked:after {
+  content: '✔';
+  color: white;
+  margin-top: 1px;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  border-radius: 20%;
+  border: 1px solid #e74c3c;
 }
