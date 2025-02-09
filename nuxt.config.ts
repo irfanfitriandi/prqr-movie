@@ -5,10 +5,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     apiBaseUrl: '',
+    apiImgBaseUrl: '',
     public: {
       apiKey: '',
+      apiImg: '',
     },
   },
+  modules: ['@pinia/nuxt', '@nuxt/eslint', '@nuxt/image'],
   imports: {
     dirs: ['libs/**/*.ts'],
   },
@@ -25,5 +28,4 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: ['@pinia/nuxt', '@nuxt/eslint'],
 })
