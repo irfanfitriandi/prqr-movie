@@ -47,20 +47,34 @@ Key Files:
 Prerequisites:
 
 - Node.js (v14 or later)
-- pnpm (v6 or later)
+- pnpm (v6 or later), npm, or yarn
 
-To install the project dependencies, run:
+To install the project dependencies, run one of the following commands based on your preferred package manager:
 
 ```bash
+# Using pnpm (recommended)
 pnpm install
+
+# Using npm
+npm install
+
+# Using yarn
+yarn install
 ```
 
 ### Getting Started
 
-To start the development server:
+To start the development server, use one of the following commands:
 
 ```bash
+# Using pnpm (recommended)
 pnpm dev
+
+# Using npm
+npm run dev
+
+# Using yarn
+yarn dev
 ```
 
 This will start the application on `http://localhost:3000`.
@@ -83,13 +97,27 @@ Replace `your_tmdb_api_key` with your actual TMDb API key.
 To build the application for production:
 
 ```bash
+# Using pnpm
 pnpm build
+
+# Using npm
+npm run build
+
+# Using yarn
+yarn build
 ```
 
 To preview the production build:
 
 ```bash
+# Using pnpm
 pnpm preview
+
+# Using npm
+npm run preview
+
+# Using yarn
+yarn preview
 ```
 
 ### Linting
@@ -97,13 +125,27 @@ pnpm preview
 To run linting checks:
 
 ```bash
+# Using pnpm
 pnpm lint
+
+# Using npm
+npm run lint
+
+# Using yarn
+yarn lint
 ```
 
 To automatically fix linting issues:
 
 ```bash
+# Using pnpm
 pnpm lint:fix
+
+# Using npm
+npm run lint:fix
+
+# Using yarn
+yarn lint:fix
 ```
 
 ### Testing & Quality
@@ -126,7 +168,7 @@ Common issues and solutions:
 
 3. TypeScript Errors
    - Problem: TypeScript compilation errors
-   - Solution: Run `pnpm install` to ensure all dependencies are up to date, then check for type mismatches in your code
+   - Solution: Run `pnpm install` (or `npm install` or `yarn install`) to ensure all dependencies are up to date, then check for type mismatches in your code
 
 For debugging:
 
@@ -160,7 +202,7 @@ The `useContentFetch` composable manages the state of content fetching, includin
 
 The application can be deployed to any hosting platform that supports Node.js applications. Here's a general deployment process:
 
-1. Build the application using `pnpm build`
+1. Build the application using `pnpm build` (or `npm run build` or `yarn build`)
 2. Set up environment variables on your hosting platform
 3. Upload the `.output` directory to your hosting provider
 4. Configure your server to serve the Nuxt application

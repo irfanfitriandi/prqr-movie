@@ -17,7 +17,7 @@ const TAB_OPTIONS = ['Popularity', 'Release Date']
           <div class="bg-primary h-1.5 w-28"></div>
           <div class="text-2xl font-semibold">Discover {{ type }}</div>
         </div>
-        <div class="space-x-6">
+        <div class="flex h-fit gap-6">
           <button
             v-for="(tab, id) in TAB_OPTIONS"
             :key="tab"

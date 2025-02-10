@@ -12,6 +12,10 @@ export default defineEventHandler(async (event) => {
     const targetPath = event.path.replace('/api', '')
     const url = useRuntimeConfig().apiBaseUrl + targetPath
 
-    return proxyRequest(event, url)
+    return proxyRequest(event, url, {
+      headers: {
+        'X-Forwarded-Host': 'api.themoviedb.org',
+      },
+    })
   }
 })
