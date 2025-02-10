@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useSeoMeta({
+  title: 'PQR Movie: A Nuxt.js-based Movie Information',
+  ogTitle: 'PQR Movie: A Nuxt.js-based Movie Information',
+})
 const { data: popular } = useApi<PaginatedResponse<Movie>>(
   API.DISCOVER.DISCOVER_MOVIES,
 )

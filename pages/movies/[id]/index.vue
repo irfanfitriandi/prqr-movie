@@ -12,6 +12,17 @@ const { data: reviews, status: reviewsStatus } = useApi<
 const { data: recom, status: recomStatus } = useApi<PaginatedResponse<Movie>>(
   API.MOVIES.GET_MOVIE_RECOMMENDATIONS(route.params.id as string),
 )
+
+watchEffect(() => {
+  if (movie.value) {
+    useSeoMeta({
+      title: movie.value.title + ' - PRQ Movie',
+      ogTitle: movie.value.title + ' - PRQ Movie',
+      description: movie.value.overview,
+      ogDescription: movie.value.overview,
+    })
+  }
+})
 </script>
 
 <template>
@@ -33,7 +44,7 @@ const { data: recom, status: recomStatus } = useApi<PaginatedResponse<Movie>>(
         alt="backdrop"
         @load="isBackdropLoaded = true"
       />
-
+      <div class="absolute inset-0 bg-black/40"></div>
       <div class="absolute bottom-0 h-20 w-full bg-black/50"></div>
     </div>
 

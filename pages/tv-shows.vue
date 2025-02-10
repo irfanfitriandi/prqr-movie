@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useSeoMeta({
+  title: 'TV Shows - PRQ Movie',
+  ogTitle: 'TV Shows - PRQ Movie',
+})
 const { data: popular } = useApi<PaginatedResponse<Movie>>(
   API.DISCOVER.DISCOVER_TV,
 )

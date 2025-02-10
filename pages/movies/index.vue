@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const { data, status, filters, page, isLoadingMore, loadMore, toggleGenre } =
   useContentFetch(API.DISCOVER.DISCOVER_MOVIES)
+
+useSeoMeta({
+  title: 'Movies - PRQ Movie',
+  ogTitle: 'Movies - PRQ Movie',
+})
 </script>
 
 <template>
