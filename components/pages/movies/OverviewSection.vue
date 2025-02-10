@@ -3,7 +3,6 @@ import dayjs from 'dayjs'
 
 defineProps<{
   movie: MovieDetail
-  isLoading: boolean
 }>()
 const { getLanguage } = useLanguageStore()
 const { getAssetUrl } = useAssetUrl()
@@ -41,8 +40,6 @@ const isImageLoaded = ref(false)
         <div class="text-sm font-medium capitalize">
           {{ movie.genres.map((genre) => genre.name.toLowerCase()).join(', ') }}
         </div>
-        <SkeletonLoading v-if="isLoading" class="mt-4 h-12 w-52" />
-        <SkeletonLoading v-if="isLoading" class="h-8 w-52" />
       </div>
 
       <div class="mt-14 flex h-fit items-center">
@@ -91,13 +88,11 @@ const isImageLoaded = ref(false)
         </div>
       </div>
 
-      <SkeletonLoading v-if="isLoading" class="mt-14 h-8 w-1/2" />
       <div class="mt-14">
         <h2 class="text-red font-semibold uppercase">OVERVIEW</h2>
         <p class="mt-2 text-sm leading-[200%] text-black">
           {{ movie.overview }}
         </p>
-        <SkeletonLoading v-if="isLoading" class="mt-4 h-16" />
       </div>
     </div>
   </section>

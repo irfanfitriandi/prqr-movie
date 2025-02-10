@@ -52,11 +52,8 @@ watchEffect(() => {
       class="relative mt-[406px] flex min-h-[400px] justify-center bg-white pb-24"
     >
       <div class="-mt-[220px] flex w-[80%] flex-col px-4">
-        <OverviewSection
-          v-if="movie"
-          :movie="movie"
-          :is-loading="movieStatus === 'pending'"
-        />
+        <OverviewSection v-if="movie" :movie="movie" />
+        <OverviewSectionSkeleton v-else-if="movieStatus === 'pending'" />
 
         <section
           v-if="reviews?.results.length || 0 > 0"
@@ -72,8 +69,10 @@ watchEffect(() => {
             />
           </div>
         </section>
-        <div v-if="reviewsStatus === 'pending'">
-          <SkeletonLoading v-for="id in 2" :key="id" class="h-48 w-1/2" />
+        <div v-if="reviewsStatus === 'pending'" class="mt-10 min-h-[200px]">
+          <div class="mt-6 flex gap-8">
+            <SkeletonLoading v-for="id in 2" :key="id" class="h-48 w-1/2" />
+          </div>
         </div>
       </div>
     </div>
