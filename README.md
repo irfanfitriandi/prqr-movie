@@ -4,6 +4,35 @@ PQR Movie is a comprehensive web application built with Nuxt.js that provides us
 
 This application offers a rich user interface with features such as movie carousels, detailed movie pages, and advanced filtering options. It's designed to provide an engaging and informative experience for movie enthusiasts and casual viewers alike.
 
+# Important Notice: API Access Issue on Vercel Deployment
+
+Due to a known limitation with Vercel's serverless environment and Nuxt 3's Nitro engine when handling proxy server requests, this application encounters a **403 - Host Not Permitted** error when trying to access the API in a production deployment on Vercel.
+
+## Reason for the Issue
+Vercel imposes certain restrictions on outgoing requests, particularly when proxying requests to external services. This can cause API requests made via Nuxt 3's Nitro server to be blocked if the target host is not explicitly permitted in Vercel's configuration. Unfortunately, this limitation prevents the application from functioning properly in production.
+
+## Recommended Solution
+To ensure full API access and proper functionality, we recommend running the application **locally** instead of deploying it to Vercel. You can do so with the following steps:
+
+### Steps to Run Locally
+1. Clone the repository:
+   ```sh
+   git clone <repo-url>
+   cd <repo-folder>
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install  # or yarn install
+   ```
+
+3. Run the application in development mode:
+   ```sh
+   npm run dev  # or yarn dev
+   ```
+
+This setup will allow the application to connect to the API without restrictions.
+
 ## Repository Structure
 
 The repository is organized as follows:
@@ -148,34 +177,6 @@ npm run lint:fix
 yarn lint:fix
 ```
 
-### Testing & Quality
-
-Currently, the project does not have automated tests set up. It's recommended to add unit and integration tests to ensure code quality and prevent regressions.
-
-### Troubleshooting
-
-Common issues and solutions:
-
-1. API Rate Limiting
-
-   - Problem: Receiving 429 Too Many Requests errors
-   - Solution: Implement request caching or reduce the frequency of API calls
-
-2. Image Loading Issues
-
-   - Problem: Images not loading or displaying broken links
-   - Solution: Verify that the `NUXT_PUBLIC_API_IMG` environment variable is set correctly
-
-3. TypeScript Errors
-   - Problem: TypeScript compilation errors
-   - Solution: Run `pnpm install` (or `npm install` or `yarn install`) to ensure all dependencies are up to date, then check for type mismatches in your code
-
-For debugging:
-
-- Enable verbose logging by setting `debug: true` in the `nuxt.config.ts` file
-- Check the browser console and network tab for detailed error messages
-- Review the server logs in the terminal where you're running the Nuxt application
-
 ## Data Flow
 
 The application follows a typical Nuxt.js data flow:
@@ -198,26 +199,3 @@ The application follows a typical Nuxt.js data flow:
 
 The `useContentFetch` composable manages the state of content fetching, including pagination, filtering, and sorting. It interacts with the Pinia stores for genres and languages to provide a seamless data management experience.
 
-## Deployment
-
-The application can be deployed to any hosting platform that supports Node.js applications. Here's a general deployment process:
-
-1. Build the application using `pnpm build` (or `npm run build` or `yarn build`)
-2. Set up environment variables on your hosting platform
-3. Upload the `.output` directory to your hosting provider
-4. Configure your server to serve the Nuxt application
-
-For serverless deployments, consider using platforms like Vercel or Netlify, which have built-in support for Nuxt applications.
-
-## Infrastructure
-
-The application doesn't have a dedicated infrastructure stack defined in the provided code. However, it's designed to be deployed as a Node.js application with server-side rendering capabilities.
-
-Key infrastructure considerations:
-
-- Node.js runtime environment
-- Environment for serving static assets
-- API proxy to handle requests to the TMDb API
-- Content Delivery Network (CDN) for caching and serving images
-
-When setting up the infrastructure, ensure that the necessary environment variables are configured and that the server is set up to handle both server-side rendering and API proxying.
