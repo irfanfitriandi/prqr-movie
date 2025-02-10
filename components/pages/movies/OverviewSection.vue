@@ -32,7 +32,7 @@ const isImageLoaded = ref(false)
       />
     </div>
     <div class="w-full">
-      <div class="space-y-2">
+      <div class="flex flex-col gap-2">
         <div class="text-lg font-medium">
           {{ dayjs(movie.release_date).format('YYYY') }}
         </div>

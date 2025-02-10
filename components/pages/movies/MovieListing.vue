@@ -17,7 +17,7 @@ defineProps<{
       </li>
     </ul>
 
-    <div v-if="noData" class="space-y-2 text-xl font-semibold">
+    <div v-if="noData" class="flex flex-col gap-2 text-xl font-semibold">
       <p>Movies Not Found. . . &#128549;</p>
       <p>Please kindly check your filters &#128521;</p>
     </div>

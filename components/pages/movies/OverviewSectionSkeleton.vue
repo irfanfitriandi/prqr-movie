@@ -4,7 +4,7 @@
       <div></div>
     </div>
     <div class="w-full">
-      <div class="space-y-2">
+      <div class="flex flex-col gap-2">
         <SkeletonLoading class="mt-4 h-12 w-52" />
         <SkeletonLoading class="h-8 w-52" />
       </div>

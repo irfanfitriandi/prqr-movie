@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <div
-    class="space-y-4 rounded-xl bg-[#F9F9F9] px-5 py-7 text-black shadow-md shadow-black/10"
+    class="flex flex-col gap-4 rounded-xl bg-[#F9F9F9] px-5 py-7 text-black shadow-md shadow-black/10"
   >
     <div class="flex justify-between">
       <div class="flex items-center gap-4">

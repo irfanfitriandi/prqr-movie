@@ -13,7 +13,7 @@ const TAB_OPTIONS = ['Popularity', 'Release Date']
     <div class="absolute inset-auto top-0 h-[333px] w-full bg-white/5"></div>
     <div class="z-10 flex w-[80%] flex-col px-4 py-20">
       <div class="flex justify-between">
-        <div class="space-y-4">
+        <div class="flex flex-col gap-4">
           <div class="bg-primary h-1.5 w-28"></div>
           <div class="text-2xl font-semibold">Discover {{ type }}</div>
         </div>

@@ -58,9 +58,9 @@ const handleSelectSort = (sort: SortBy) => {
 
     <h2 class="border-b border-white/10 px-6 py-4 font-semibold">Genres</h2>
 
-    <div class="space-y-4 px-6 py-4">
+    <div class="flex flex-col gap-4 px-6 py-4">
       <fieldset>
-        <ul class="space-y-4">
+        <ul class="flex flex-col gap-4">
           <li v-for="(id, genre) in GENRE_OPTIONS" :key="id">
             <label class="flex items-center justify-between">
               <span>{{ genre }}</span>
