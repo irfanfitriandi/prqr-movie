@@ -26,6 +26,12 @@ export interface Genre {
   name: string
 }
 
+export interface Language {
+  iso_639_1: string
+  english_name: string
+  name: string
+}
+
 export interface Movie {
   adult: boolean
   backdrop_path: string
@@ -57,4 +63,21 @@ export interface MovieDetail extends Movie {
   spoken_languages: Spokenlanguage[]
   status: string
   tagline: string
+}
+
+interface Authordetails {
+  name: string
+  username: string
+  avatar_path: string
+  rating: number
+}
+
+export interface Review {
+  author: string
+  author_details: Authordetails
+  content: string
+  created_at: string
+  id: string
+  updated_at: string
+  url: string
 }

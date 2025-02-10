@@ -15,7 +15,7 @@ const { data: release } = useApi<PaginatedResponse<Movie>>(
 </script>
 
 <template>
-  <section class="relative flex justify-center">
+  <section class="relative flex min-h-screen justify-center">
     <DiscoverSection
       :popular="popular?.results || []"
       :release="release?.results || []"

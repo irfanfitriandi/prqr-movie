@@ -18,7 +18,7 @@ const closeCategories = () => {
 </script>
 
 <template>
-  <nav class="flex h-16 items-center justify-center bg-white/5">
+  <nav class="relative z-20 flex h-16 items-center justify-center bg-white/5">
     <div class="flex w-[80%] items-center gap-6 px-4">
       <NuxtLink to="/" class="w-fit">
         <LogoColorIcon class="h-8" />

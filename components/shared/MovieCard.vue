@@ -3,8 +3,7 @@ import dayjs from 'dayjs'
 
 const props = defineProps<{ movie: Movie }>()
 const { getGenreMovieName, fetchGenres, genreMovie } = useGenreStore()
-const url = useRequestURL()
-const apiImg = useRuntimeConfig().public.apiImg
+const { getAssetUrl } = useAssetUrl()
 const isImageLoaded = ref(false)
 
 const genreName = computed(() => {
@@ -41,14 +40,14 @@ onMounted(() => {
           v-if="!isImageLoaded"
           class="absolute inset-0 bg-gray-700"
           :style="{
-            backgroundImage: `url(${url.origin + apiImg + '/w92' + movie.poster_path})`,
+            backgroundImage: `url(${getAssetUrl(movie.poster_path, '/w92')})`,
             backgroundSize: 'cover',
           }"
         ></div>
 
         <NuxtImg
           format="webp"
-          :src="url.origin + apiImg + '/w500' + movie.poster_path"
+          :src="getAssetUrl(movie.poster_path)"
           :alt="'poster ' + movie.title"
           class="absolute aspect-[2/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"

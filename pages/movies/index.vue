@@ -4,7 +4,7 @@ const { data, status, filters, page, isLoadingMore, loadMore, toggleGenre } =
 </script>
 
 <template>
-  <div class="relative flex justify-center">
+  <section class="relative flex min-h-screen justify-center">
     <div class="absolute inset-auto top-0 h-[333px] w-full bg-white/5"></div>
     <div class="z-10 flex w-[80%] flex-col px-4 py-20">
       <header class="space-y-4">
@@ -33,5 +33,5 @@ const { data, status, filters, page, isLoadingMore, loadMore, toggleGenre } =
         />
       </section>
     </div>
-  </div>
+  </section>
 </template>
