@@ -20,6 +20,7 @@
     "dayjs": "^1.11.13",
     "nuxt": "^3.15.4",
     "pinia": "^2.3.1",
+    "swiper": "^11.2.2",
     "vue": "latest",
     "vue-dompurify-html": "^5.2.0",
     "vue-router": "latest"

@@ -15,7 +15,11 @@ const { data: release } = useApi<PaginatedResponse<Movie>>(
 </script>
 
 <template>
-  <section class="relative flex min-h-screen justify-center">
+  <section
+    class="relative flex min-h-screen flex-col items-center justify-center"
+  >
+    <MovieCarousell v-if="popular" :movies="popular?.results" />
+
     <DiscoverSection
       :popular="popular?.results || []"
       :release="release?.results || []"

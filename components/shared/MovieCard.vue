@@ -84,7 +84,9 @@ onMounted(() => {
       </div>
     </div>
 
-    <p class="mt-3 text-lg font-bold">{{ movie.title }}</p>
-    <p>{{ dayjs(movie.release_date).format('YYYY') }}</p>
+    <p class="mt-3 font-semibold">{{ movie.title }}</p>
+    <p class="text-muted text-sm">
+      {{ dayjs(movie.release_date).format('YYYY') }}
+    </p>
   </div>
 </template>
