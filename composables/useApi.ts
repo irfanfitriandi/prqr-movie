@@ -19,7 +19,13 @@ export const useApi = <T>(
     },
     body: method !== 'GET' ? options?.body : undefined,
     onResponseError({ error }) {
-      throw createError(error || {})
+      const message = error?.message || 'An unexpected error occurred'
+      showError({
+        statusCode: (error as any)?.statusCode || 500,
+        statusMessage: (error as any)?.statusMessage || 'API request failed',
+        message: `Application Error: ${message}`,
+        fatal: true,
+      })
     },
   })
 }

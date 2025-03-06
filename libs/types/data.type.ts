@@ -34,19 +34,19 @@ export interface Language {
 
 export interface Movie {
   adult: boolean
-  backdrop_path: string
+  backdrop_path: string | null
   id: number
   original_language: string
   original_title: string
   overview: string
   popularity: number
-  poster_path: string
+  poster_path: string | null
   release_date: string
   title: string
   video: boolean
   vote_average: number
   vote_count: number
-  genre_ids: number[]
+  genre_ids?: number[]
 }
 
 export interface MovieDetail extends Movie {
@@ -68,8 +68,8 @@ export interface MovieDetail extends Movie {
 interface Authordetails {
   name: string
   username: string
-  avatar_path: string
-  rating: number
+  avatar_path: string | null
+  rating: number | null
 }
 
 export interface Review {
