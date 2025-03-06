@@ -115,7 +115,7 @@ const closeCategories = () => {
         <ul v-for="menu in MENU_OPTIONS" :key="menu.label">
           <li
             v-if="menu.label === 'categories'"
-            class="relative flex cursor-pointer items-center gap-2"
+            class="relative flex cursor-pointer items-center gap-2 font-semibold"
             @pointerenter="openCategories"
             @pointerleave="closeCategories"
           >
@@ -150,13 +150,13 @@ const closeCategories = () => {
             </div>
           </li>
 
-          <li v-else-if="menu.action === 'navigate'">
+          <li v-else-if="menu.action === 'navigate'" class="font-semibold">
             <NuxtLink :to="menu.url">
               {{ menu.label }}
             </NuxtLink>
           </li>
 
-          <li v-else class="cursor-not-allowed text-gray-500">
+          <li v-else class="cursor-not-allowed font-semibold text-gray-500">
             {{ menu.label }}
           </li>
         </ul>

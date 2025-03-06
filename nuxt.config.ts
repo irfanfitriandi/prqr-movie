@@ -7,10 +7,10 @@ export default defineNuxtConfig({
     preset: 'vercel',
   },
   runtimeConfig: {
+    apiKey: '',
     apiBaseUrl: '',
     apiImgBaseUrl: '',
     public: {
-      apiKey: '',
       apiImg: '',
     },
   },

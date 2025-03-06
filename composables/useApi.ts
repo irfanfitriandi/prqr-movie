@@ -5,10 +5,8 @@ export const useApi = <T>(
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
   options?: UseFetchOptions<T>,
 ) => {
-  const config = useRuntimeConfig()
-
   return useFetch(url, {
-    baseURL: '/api',
+    baseURL: '/api/tmdb',
     ...options,
     method,
     headers: {
@@ -17,7 +15,6 @@ export const useApi = <T>(
     },
     query: {
       ...options?.query,
-      api_key: config.public.apiKey,
       'vote_count.gte': 100,
     },
     body: method !== 'GET' ? options?.body : undefined,

@@ -9,19 +9,24 @@ This application offers a rich user interface with features such as movie carous
 Due to a known limitation with Vercel's serverless environment and Nuxt 3's Nitro engine when handling proxy server requests, this application encounters a **403 - Host Not Permitted** error when trying to access the API in a production deployment on Vercel.
 
 ## Reason for the Issue
+
 Vercel imposes certain restrictions on outgoing requests, particularly when proxying requests to external services. This can cause API requests made via Nuxt 3's Nitro server to be blocked if the target host is not explicitly permitted in Vercel's configuration. Unfortunately, this limitation prevents the application from functioning properly in production.
 
 ## Recommended Solution
+
 To ensure full API access and proper functionality, we recommend running the application **locally** instead of deploying it to Vercel. You can do so with the following steps:
 
 ### Steps to Run Locally
+
 1. Clone the repository:
+
    ```sh
    git clone <repo-url>
    cd <repo-folder>
    ```
 
 2. Install dependencies:
+
    ```sh
    npm install  # or yarn install
    ```
@@ -198,4 +203,3 @@ The application follows a typical Nuxt.js data flow:
 ```
 
 The `useContentFetch` composable manages the state of content fetching, including pagination, filtering, and sorting. It interacts with the Pinia stores for genres and languages to provide a seamless data management experience.
-

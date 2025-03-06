@@ -1,15 +1,25 @@
 export const useGenreStore = defineStore('genre', () => {
   const genreMovie = ref<Genre[]>([])
+  const isLoading = ref(false)
+
   const fetchGenres = async () => {
-    if (genreMovie.value.length === 0) {
+    if (isLoading.value || genreMovie.value.length > 0) return
+    isLoading.value = true
+
+    try {
       const { data } = await useApi<{ genres: Genre[] }>(
         API.GENRES.GET_GENRES_MOVIE,
       )
-      if (data.value) {
+      if (data?.value?.genres?.length) {
         genreMovie.value = data.value.genres
       }
+    } catch (error) {
+      console.error('Failed to fetch genres', error)
+    } finally {
+      isLoading.value = false
     }
   }
+
   const getGenreMovieName = (id: number) => {
     if (genreMovie.value.length === 0) {
       fetchGenres()
@@ -19,7 +29,6 @@ export const useGenreStore = defineStore('genre', () => {
     const genre = genreMovie.value.find((genre) => genre.id === id)
     return genre ? genre.name : 'Unknown'
   }
-  fetchGenres()
 
   return {
     genreMovie,

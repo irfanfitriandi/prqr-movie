@@ -1,11 +1,21 @@
 export const useLanguageStore = defineStore('language', () => {
   const languageList = ref<Language[]>([])
+  const isLoading = ref(false)
+
   const fetchLanguages = async () => {
-    if (languageList.value.length === 0) {
+    if (isLoading.value || languageList.value.length > 0) return
+
+    isLoading.value = true
+
+    try {
       const { data } = await useApi<Language[]>(API.LANGUAGE.GET_LANGUAGES)
-      if (data.value) {
+      if (data?.value?.length) {
         languageList.value = data.value
       }
+    } catch (error) {
+      console.error('Failed to fetch languages', error)
+    } finally {
+      isLoading.value = false
     }
   }
   const getLanguage = (id: string) => {
@@ -17,8 +27,6 @@ export const useLanguageStore = defineStore('language', () => {
     const language = languageList.value.find((l) => l.iso_639_1 === id)
     return language ? language.english_name : 'Unknown'
   }
-
-  fetchLanguages()
 
   return {
     languageList,
