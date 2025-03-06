@@ -1,16 +1,10 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 
-const props = defineProps<{ movie: Movie }>()
-const { getGenreMovieName, fetchGenres, genreMovie } = useGenreStore()
+defineProps<{ movie: Movie }>()
+const { getGenreById } = useGenreStore()
 const { getAssetUrl } = useAssetUrl()
 const isImageLoaded = ref(false)
-
-const genreName = computed(() => {
-  return genreMovie.length > 0
-    ? getGenreMovieName(props.movie.genre_ids[0])
-    : 'Loading...'
-})
 
 const handleImageError = (event: Event | any) => {
   // Bug on nuxt/image, target null
@@ -18,12 +12,6 @@ const handleImageError = (event: Event | any) => {
   // target.src = ''
   if (process.env.NODE_ENV === 'development') console.error(event)
 }
-
-onMounted(() => {
-  if (genreMovie.length === 0) {
-    fetchGenres()
-  }
-})
 </script>
 
 <template>
@@ -67,7 +55,7 @@ onMounted(() => {
         </div>
         <ClientOnly>
           <div class="pt-2 text-lg font-semibold">
-            {{ genreName }}
+            {{ getGenreById(movie.genre_ids[0]) }}
           </div>
         </ClientOnly>
         <NuxtLink

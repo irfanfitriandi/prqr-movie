@@ -8,6 +8,11 @@ export const useApi = <T>(
   return useFetch(url, {
     baseURL: '/api/tmdb',
     ...options,
+    key: `${typeof url === 'string' ? url : url()}-${method}-${JSON.stringify(options?.query)}`,
+    getCachedData: (key) => {
+      const nuxtApp = useNuxtApp()
+      return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+    },
     method,
     headers: {
       ...options?.headers,

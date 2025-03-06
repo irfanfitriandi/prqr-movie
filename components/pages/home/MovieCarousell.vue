@@ -12,7 +12,7 @@ defineProps<{
 }>()
 
 const { getAssetUrl } = useAssetUrl()
-const { getGenreMovieName } = useGenreStore()
+const { getGenreById } = useGenreStore()
 const isImageLoaded = ref(false)
 </script>
 
@@ -80,7 +80,7 @@ const isImageLoaded = ref(false)
               <div class="text-lg font-extrabold">&#8226;</div>
             </div>
             <div class="text-lg">
-              {{ getGenreMovieName(movie.genre_ids[0]) }}
+              {{ getGenreById(movie.genre_ids[0]) }}
             </div>
           </div>
           <p class="h-[100px] overflow-hidden text-sm text-ellipsis">

@@ -65,7 +65,10 @@ const closeCategories = () => {
 </script>
 
 <template>
-  <nav class="relative z-20 flex h-16 items-center justify-center bg-white/5">
+  <nav
+    class="relative z-20 flex h-16 items-center justify-center bg-white/5"
+    aria-label="Main navigation"
+  >
     <div class="flex w-[80%] items-center gap-6 px-4">
       <NuxtLink to="/" class="w-fit">
         <LogoColorIcon class="h-8" />
@@ -82,6 +85,7 @@ const closeCategories = () => {
           class="flex-1"
           type="text"
           placeholder="Search movies..."
+          aria-label="Search movies"
           @input="handleSearch(search)"
         />
         <div>
@@ -113,41 +117,43 @@ const closeCategories = () => {
 
       <div class="flex w-fit gap-6 uppercase">
         <ul v-for="menu in MENU_OPTIONS" :key="menu.label">
-          <li
-            v-if="menu.label === 'categories'"
-            class="relative flex cursor-pointer items-center gap-2 font-semibold"
-            @pointerenter="openCategories"
-            @pointerleave="closeCategories"
-          >
-            <div>
-              <CategoriesIcon class="h-5" />
-            </div>
-            <div>{{ menu.label }}</div>
-            <div
-              v-if="showCategories"
-              class="absolute top-8 left-[50%] z-20 flex w-[120%] -translate-x-1/2 flex-col overflow-clip rounded-lg bg-white py-2 shadow-md shadow-black/20"
+          <li v-if="menu.label === 'categories'">
+            <button
+              class="relative flex items-center gap-2 font-semibold uppercase"
+              role="button"
+              :aria-expanded="showCategories"
+              aria-controls="categories-menu"
+              tabindex="0"
               @pointerenter="openCategories"
               @pointerleave="closeCategories"
             >
+              <CategoriesIcon class="h-5" />
+              <span>{{ menu.label }}</span>
               <div
-                v-for="(id, genre) in GENRE_OPTIONS"
-                :key="id"
-                class="flex w-full"
-                @click="showCategories = false"
+                v-if="showCategories"
+                id="categories-menu"
+                class="absolute top-8 left-[50%] z-20 flex w-[120%] -translate-x-1/2 flex-col overflow-clip rounded-lg bg-white py-2 shadow-md shadow-black/20"
+                @pointerenter="openCategories"
+                @pointerleave="closeCategories"
               >
-                <NuxtLink
-                  :to="{
-                    name: 'movies',
-                    query: {
-                      genres: id,
-                    },
-                  }"
-                  class="text-secondary w-full py-2 pl-4 text-sm font-bold"
+                <div
+                  v-for="(id, genre) in GENRE_OPTIONS"
+                  :key="id"
+                  class="flex w-full"
+                  @click="showCategories = false"
                 >
-                  {{ genre }}
-                </NuxtLink>
+                  <NuxtLink
+                    :to="{
+                      name: 'movies',
+                      query: { genres: id },
+                    }"
+                    class="text-secondary w-full py-2 pl-4 text-start text-sm font-bold"
+                  >
+                    {{ genre }}
+                  </NuxtLink>
+                </div>
               </div>
-            </div>
+            </button>
           </li>
 
           <li v-else-if="menu.action === 'navigate'" class="font-semibold">

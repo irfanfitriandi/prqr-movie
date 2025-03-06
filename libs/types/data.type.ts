@@ -16,7 +16,7 @@ interface Productioncountry {
 
 interface Productioncompany {
   id: number
-  logo_path: null | string
+  logo_path: string
   name: string
   origin_country: string
 }
@@ -34,19 +34,19 @@ export interface Language {
 
 export interface Movie {
   adult: boolean
-  backdrop_path: string | null
+  backdrop_path: string
   id: number
   original_language: string
   original_title: string
   overview: string
   popularity: number
-  poster_path: string | null
+  poster_path: string
   release_date: string
   title: string
   video: boolean
   vote_average: number
   vote_count: number
-  genre_ids?: number[]
+  genre_ids: number[]
 }
 
 export interface MovieDetail extends Movie {
@@ -68,8 +68,8 @@ export interface MovieDetail extends Movie {
 interface Authordetails {
   name: string
   username: string
-  avatar_path: string | null
-  rating: number | null
+  avatar_path: string
+  rating: number
 }
 
 export interface Review {
